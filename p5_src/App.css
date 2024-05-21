@@ -1,0 +1,56 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+table{
+  height: 50px;
+  width: 100%;
+  border: 2px solid black;
+  text-align: center;
+}
+thead{
+  height: 50px;
+  width: 100%;
+  border: 2px solid black;
+}
+tr{
+  height: 50px;
+  width: 100%;
+  border: 2px solid black;
+}
+button{
+  height: 40px;
+  width: 100px;
+  border: 2px solid black;
+  background: transparent;
+  /*	font-family: "Ms Madi", cursive;*/
+/*	font-family: 'Advent Pro', sans-serif;*/
+/*	font-family: 'Bebas Neue', sans-serif;*/
+/*	font-family: 'Chakra Petch', sans-serif;*/
+/*	font-family: 'Kanit', sans-serif;*/
+	font-family: 'Michroma', sans-serif;
+  /*	font-family: 'Tektur', cursive;*/
+  /*	font-family: 'Ysabeau SC', sans-serif;*/
+}
+input{
+  /*	font-family: "Ms Madi", cursive;*/
+/*	font-family: 'Advent Pro', sans-serif;*/
+/*	font-family: 'Bebas Neue', sans-serif;*/
+/*	font-family: 'Chakra Petch', sans-serif;*/
+/*	font-family: 'Kanit', sans-serif;*/
+	font-family: 'Michroma', sans-serif;
+  /*	font-family: 'Tektur', cursive;*/
+  /*	font-family: 'Ysabeau SC', sans-serif;*/
+}
+label{
+  margin-top: 5%;
+  /*	font-family: "Ms Madi", cursive;*/
+/*	font-family: 'Advent Pro', sans-serif;*/
+/*	font-family: 'Bebas Neue', sans-serif;*/
+/*	font-family: 'Chakra Petch', sans-serif;*/
+/*	font-family: 'Kanit', sans-serif;*/
+	/* font-family: 'Michroma', sans-serif; */
+  /*	font-family: 'Tektur', cursive;*/
+  	font-family: 'Ysabeau SC', sans-serif;
+}
