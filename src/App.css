@@ -1,0 +1,68 @@
+body{
+  background-color: rgb(163, 185, 185);
+}
+
+.suphed{
+ color: darkblue;
+}
+
+.add-post-container{
+  background-color: aliceblue;
+  width: 50%;
+  margin-top: 100px;
+  border-radius: 20px;
+}
+
+input {
+  width: 300px;
+  height: 50px;
+  border: 0;
+  box-shadow: 2px 4px 6px 1px;
+  font-size: 40px;
+}
+
+button{
+  padding: 10px 20px;
+  background-color: blueviolet;
+  font-size: 20px;
+  font-weight: bold;
+  color: aliceblue;
+  border-radius: 20px;
+  border: 0;
+}
+
+#link{
+  font-size: 25px;
+ color: red;
+}
+
+#head{
+  color: white;
+  font-size: 30px;
+}
+
+#para{
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+}
+
+#btndel{
+  background-color: red;
+}
+
+#edit{
+  background-color: green;
+  margin-bottom: 20px;
+  margin: 15px;
+}
+
+#box{
+  width: 25%;
+  background-color: dimgrey;
+  border-radius: 20px;
+}
+
+#file{
+  font-size: 22px;
+}
