@@ -1,15 +1,13 @@
-import React from 'react';
-import ThemeProvider from './redux/ThemeProvider';
-import ThemeComponent from './redux/ThemeComponent';
-import ToggleTheme from './redux/ToggleTheme';
+import './App.css';
+import Example from './Example';
 
 
 function App() {
   return (
-    <ThemeProvider>
-      <ToggleTheme/>
-      <ThemeComponent/>
-    </ThemeProvider>
+   <>
+ <Example/>
+   
+   </>
   );
 }
 
