@@ -1,106 +1,50 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f0f2f5;
+  background: linear-gradient(135deg, #ce72f2 10%, #9be551 100%);
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
-
 }
 
-form {
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 8px;
+.signup-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 2rem;
+  border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  max-width: 400px;
-  width: 100%;
+  text-align: center;
 }
 
-form div {
-  margin-bottom: 15px;
+h2 {
+  margin-bottom: 1rem;
 }
 
-label {
+.input-field {
   display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: #333;
-}
-
-input {
-  width: 95%;
-  padding: 10px;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
   border-radius: 4px;
-
 }
 
-button {
-  background-color: #007bff;
+.submit-button, .signout-button {
+  background: #e357c2;
   color: #fff;
   border: none;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+  padding: 0.75rem 1.5rem;
   border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background 0.3s;
 }
 
-button:hover {
-  background-color: #0056b3;
+.submit-button:hover, .signout-button:hover {
+  background: #16353c;
 }
 
-button:focus {
-  outline: none;
-}
-
-.home {
-  text-align: center;
-  font-size: 24px;
-  color: #333;
-}
-
-
-.home-container {
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  max-width: 400px;
-  width: 100%;
-}
-
-h1 {
-  font-size: 24px;
-  color: #333;
-}
-
-p {
-  font-size: 18px;
-  color: #555;
-  margin-bottom: 20px;
-}
-
-.sign-out-button {
-  background-color: #ff4b4b;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.sign-out-button:hover {
-  background-color: #d43d3d;
-}
-
-.sign-out-button:focus {
-  outline: none;
+.error-message {
+  color: red;
+  margin-top: 1rem;
 }

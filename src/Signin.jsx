@@ -1,80 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
-import { auth, provider } from './config';
-import Home from './Home';
+import React, { useState } from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from './config';
 
-function Signin() {
-  const [value, setValue] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignIn = () => {
+  const [error, setError] = useState('');
 
-  const handleSignIn = () => {
-    signInWithPopup(auth, provider)
-      .then((data) => {
-        setValue(data.user.email);
-        localStorage.setItem("email", data.user.email);
-      })
-      .catch((error) => {
-        console.error("Error during sign-in:", error);
-      });
-  };
-
-  const handleEmailPasswordSignIn = (e) => {
-    e.preventDefault();
-    signInWithEmailAndPassword(auth, email, password)
-      .then((data) => {
-        setValue(data.user.email);
-        localStorage.setItem("email", data.user.email);
-      })
-      .catch((error) => {
-        console.error("Error during sign-in:", error);
-      });
-  };
-
-  const handleSignOut = () => {
-    setValue("");
-    localStorage.removeItem("email");
-  };
-
-  useEffect(() => {
-    let useremail = localStorage.getItem("email");
-    if (useremail) {
-      setValue(useremail);
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      setError('');
+    } catch (err) {
+      setError(err.message);
     }
-  }, []);
+  };
 
   return (
     <div>
-      {value ? (
-        <Home onSignOut={handleSignOut} />
-      ) : (
-        <div>
-
-          <form onSubmit={handleEmailPasswordSignIn}>
-            <div>
-              <label>Email:</label>
-              <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required 
-              />
-            </div>
-            <div>
-              <label>Password:</label>
-              <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required 
-              />
-            </div>
-            <button onClick={handleSignIn}>Sign in with Google</button>
-          </form>
-        </div>
-      )}
+      <h2>Sign Out</h2>
+      <button onClick={handleSignOut}>Sign Out</button>
+      {error && <p>{error}</p>}
     </div>
   );
-}
+};
 
-export default Signin;
+export default SignIn;

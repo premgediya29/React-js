@@ -1,13 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
-import Signin from './Signin';
+import React from 'react';
+import SignUp from './Signup';
 
-function App() {
+
+const App = () => {
   return (
-  <>
-    <Signin/>
-  </>
+    <div>
+
+      <SignUp/>
+
+    </div>
   );
-}
+};
 
 export default App;
