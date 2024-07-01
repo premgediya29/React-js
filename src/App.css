@@ -1,50 +1,41 @@
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ce72f2 10%, #9be551 100%);
-  margin: 0;
-  padding: 0;
+  background-color: #f7f7f7;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  margin: 0;
 }
 
-.signup-container {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 2rem;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+.container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
-h2 {
-  margin-bottom: 1rem;
-}
-
-.input-field {
-  display: block;
-  width: 100%;
-  padding: 0.5rem;
-  margin-bottom: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.submit-button, .signout-button {
-  background: #e357c2;
-  color: #fff;
+button {
+  background-color: #4285f4;
+  color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background 0.3s;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
 }
 
-.submit-button:hover, .signout-button:hover {
-  background: #16353c;
+button:hover {
+  background-color: #357ae8;
 }
 
-.error-message {
-  color: red;
-  margin-top: 1rem;
+button.github {
+  background-color: #333;
+}
+
+button.github:hover {
+  background-color: #444;
 }

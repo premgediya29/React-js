@@ -1,16 +1,28 @@
 import './App.css';
-import React from 'react';
-import SignUp from './Signup';
+import Dispaly from './Display';
+import Signup from './Signup';
+import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
 
-
-const App = () => {
+function App() {
   return (
-    <div>
+    <>
 
-      <SignUp/>
+    <Router>
 
-    </div>
+      <Routes>
+
+      <Route path='/' element={<Dispaly/>} />
+
+      <Route path='/login' element={<Signup/>} />
+
+      </Routes>
+
+    </Router>
+
+     
+
+    </>
   );
-};
+}
 
 export default App;

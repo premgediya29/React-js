@@ -1,72 +1,68 @@
 import React, { useState } from 'react';
-import { createUserWithEmailAndPassword, signOut } from 'firebase/auth';
-import { auth } from './config';
+import { signInWithPopup, fetchSignInMethodsForEmail, linkWithCredential, GoogleAuthProvider, GithubAuthProvider } from 'firebase/auth';
+import { auth, googleProvider, githubProvider } from './config';
+import { useNavigate } from 'react-router-dom';
 
 
+function Signup() {
+  const [value, setValue] = useState('');
+  const navigate = useNavigate();
 
-const SignUp = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
-  const [signedUp, setSignedUp] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-
-  const handleSignUp = async (e) => {
-    e.preventDefault();
+  const handleGoogleSignIn = async () => {
     try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      setSignedUp(true);
-      setUserEmail(email);
-      console.log(email);
+      const data = await signInWithPopup(auth, googleProvider);
+      setValue(data.user.email);
+      localStorage.setItem('email', data.user.email);
+      navigate('/');
     } catch (err) {
-      setError(err.message);
+      console.error(err);
+      navigate('/login');
     }
   };
 
-  const handleSignOut = async () => {
+  const handleGitHubSignIn = async () => {
     try {
-      await signOut(auth);
-      setSignedUp(false);
-      setUserEmail('');
-    } catch (err) {
-      setError(err.message);
+      const result = await signInWithPopup(auth, githubProvider);
+      setValue(result.user.email);
+      localStorage.setItem('email', result.user.email);
+      navigate('/');
+    } catch (error) {
+      if (error.code === 'auth/account-exists-with-different-credential') {
+        const email = error.customData.email;
+        const pendingCredential = GithubAuthProvider.credentialFromError(error);
+        try {
+          const methods = await fetchSignInMethodsForEmail(auth, email);
+          if (methods.length > 0) {
+            alert(`You already have an account with ${methods[0]}. Please sign in with ${methods[0]} first and then link your GitHub account.`);
+            if (methods.includes(GoogleAuthProvider.PROVIDER_ID)) {
+              const googleResult = await signInWithPopup(auth, googleProvider);
+              await linkWithCredential(googleResult.user, pendingCredential);
+              setValue(googleResult.user.email);
+              localStorage.setItem('email', googleResult.user.email);
+              navigate('/');
+            }
+          }
+        } catch (err) {
+          console.error(err);
+          navigate('/login');
+        }
+      } else {
+        console.error(error);
+        navigate('/login');
+      }
     }
   };
-
-  if (signedUp) {
-    return (
-      <div className="signup-container">
-        <h2>Welcome, {userEmail}</h2>
-        <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
-      </div>
-    );
-  }
 
   return (
-    <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignUp}>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
-          required
-          className="input-field"
-        />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-          required
-          className="input-field"
-        />
-        <button type="submit" className="submit-button">Sign Up</button>
-      </form>
-      {error && <p className="error-message">{error}</p>}
+    <div className="container">
+      <button onClick={handleGoogleSignIn}>
+        Sign in with Google
+      </button>
+      <button className="github" onClick={handleGitHubSignIn}>
+        Sign in with GitHub
+      </button>
     </div>
   );
-};
+}
 
-export default SignUp;
+export default Signup;
