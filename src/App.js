@@ -1,27 +1,12 @@
+import logo from './logo.svg';
 import './App.css';
-import Dispaly from './Display';
-import Signup from './Signup';
-import {BrowserRouter as Router, Routes,Route} from 'react-router-dom'
+import Registration from './Registration';
 
 function App() {
   return (
-    <>
-
-    <Router>
-
-      <Routes>
-
-      <Route path='/' element={<Dispaly/>} />
-
-      <Route path='/login' element={<Signup/>} />
-
-      </Routes>
-
-    </Router>
-
-     
-
-    </>
+    <div className="App">
+      <Registration/>
+    </div>
   );
 }
 
